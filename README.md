@@ -48,6 +48,19 @@ timescale(7, 'd', 'w');
 //=> 1
 ```
 
+When only a unit of measure is passed, the nanoseconds for that unit is returned:
+
+```js
+timescale('ns');
+//=> 1
+
+timescale('ms');
+//=> 1000000
+
+timescale('s');
+//=> 1000000000
+```
+
 ### Examples
 
 Converts to seconds by default:
