@@ -1,7 +1,7 @@
 {
   "name": "timescale",
   "description": "Convert from one time scale to another. Nanosecond is the most atomic unit, week is the largest unit.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/jonschlinkert/timescale",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/timescale",
