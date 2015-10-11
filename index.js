@@ -10,10 +10,13 @@
 var isNumber = require('is-number');
 
 module.exports = function timescale(num, a, b) {
+  if (arguments.length === 1 && !isNumber(num) && typeof num === 'string') {
+    return unit(num);
+  }
   if (!isNumber(num)) {
     throw new TypeError('expected a number');
   }
-  return (+num * unit(a)) / unit(b || 'ns');
+  return (+num * unit(a)) / unit(b || 's');
 };
 
 function unit(name) {

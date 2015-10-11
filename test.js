@@ -4,19 +4,35 @@ require('mocha');
 var assert = require('assert');
 var timescale = require('./');
 
-describe('timescale', function () {
+describe('units', function () {
+  it('should throw an error if unit is invalid', function () {
+    try {
+      var res = timescale(1, 'foo');
+    } catch(err) {
+      assert(err);
+      assert(err.message);
+      assert(err.message === '"foo" is not a valid unit of time.');
+    }
+  });
+
+  it('should return a number in nanoseconds when only a unit is passed', function() {
+    assert.equal(timescale('d'), 86400000000000);
+    assert.equal(timescale('s'), 1000000000);
+    assert.equal(timescale('ms'), 1000000);
+  });
+});
+
+describe('number', function () {
   it('should throw an error if time is not a number', function () {
     try {
-      timescale('foo');
+      timescale('foo', 'foo');
     } catch(err) {
       assert(err);
       assert(err.message);
       assert(err.message === 'expected a number');
     }
   });
-});
 
-describe('number', function () {
   it('should work when number is an integer', function() {
     assert.equal(timescale(7, 'd', 'w'), 1);
   });
